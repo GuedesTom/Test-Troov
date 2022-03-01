@@ -3,7 +3,7 @@ const router = express.Router();
 const controle = require("../controllers/object");
 const userController = require("../controllers/user");
 
-router.post("/", userController.isLoggedIn, controle.create);
+router.post("/", controle.create);
 router.get("/", controle.afficher);
 router.get("/:id", controle.afficherid);
 router.patch("/:id", userController.isLoggedIn, controle.modif);

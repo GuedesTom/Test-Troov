@@ -14,10 +14,7 @@ exports.afficher = async (req, res) => {
 //cree un object
 exports.create = async (req, res) => {
   try {
-    let user = await User.findById(req.payload.id);
     let object = await Object.create(req.body);
-    user.object.push(object);
-    await user.save();
     res.status(201).json(object);
   } catch (err) {
     res.status(400).json(err);

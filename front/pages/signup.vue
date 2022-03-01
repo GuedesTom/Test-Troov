@@ -3,6 +3,7 @@
     <Navbar />
     <Notification :message="error" v-if="error" />
     <div class="form-group">
+      <h1>REGISTER</h1>
       <label for="exampleInputEmail1">Email address</label>
       <input
         v-model="email"
@@ -37,8 +38,8 @@ export default {
   components: { Navbar, Notif },
   data() {
     return {
-      email: null,
-      password: null,
+      email: "",
+      password: "",
       error: null,
     };
   },
