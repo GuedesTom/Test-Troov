@@ -22,6 +22,7 @@
 
 <script>
 import Navbar from "@/components/Navbar";
+import axios from "@nuxtjs/axios"
 export default {
   components: { Navbar },
   data() {
@@ -29,21 +30,9 @@ export default {
       objects: [],
     };
   },
-  async asyncData() {
-    return {
-      objects: [
-        {
-          nom: "object 1",
-          description: "description object 1",
-          photo: "photo object 1",
-        },
-        {
-          nom: "object 2",
-          description: "description object 2",
-          photo: "photo object2",
-        },
-      ],
-    };
+  async asyncData({ $axios }) {
+    const objects = await $axios.$get("/api/object")
+    return {objects}
   },
 };
 </script>
