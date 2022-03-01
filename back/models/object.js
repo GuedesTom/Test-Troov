@@ -5,6 +5,6 @@ const objectSchema = new mongoose.Schema({
   description: String,
   photo: String,
 });
-const Object = mongoose.model("object", produitSchema);
+const Object = mongoose.model("object", objectSchema);
 
 module.exports = Object;
