@@ -9,8 +9,13 @@
               <li v-for="(object, index) in objects" :key="index">
                 <nuxt-link
                   :to="{ name: 'objects-id', params: { id: object.nom } }"
-                  ><ul><li>{{ object.nom }}</li><li>{{ object.photo }}</li></ul></nuxt-link
-                >
+                  ><ul>
+                    <li>{{ object.nom }}</li>
+                    <img
+                      :src="object.photo"
+                      style="width: 30%; height: auto"
+                    /></ul
+                ></nuxt-link>
               </li>
             </ul>
           </b-col>
@@ -22,7 +27,7 @@
 
 <script>
 import Navbar from "@/components/Navbar";
-import axios from "@nuxtjs/axios"
+import axios from "@nuxtjs/axios";
 export default {
   components: { Navbar },
   data() {
@@ -31,8 +36,8 @@ export default {
     };
   },
   async asyncData({ $axios }) {
-    const objects = await $axios.$get("/api/object")
-    return {objects}
+    const objects = await $axios.$get("/api/object");
+    return { objects };
   },
 };
 </script>

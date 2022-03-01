@@ -1,6 +1,7 @@
 <template>
   <div>
     <Navbar />
+    <Notification :message="error" v-if="error" />
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
       <input
@@ -25,22 +26,20 @@
         placeholder="Password"
       />
     </div>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
     <button class="btn btn-primary" @click="signupHandler">Submit</button>
   </div>
 </template>
 
 <script>
 import Navbar from "@/components/Navbar";
+import Notif from "@/components/Notif";
 export default {
-  components: { Navbar },
+  components: { Navbar, Notif },
   data() {
     return {
       email: null,
       password: null,
+      error: null,
     };
   },
   methods: {
@@ -51,13 +50,13 @@ export default {
       };
       console.log(data);
       try {
-        const res = await this.$axios.post("/api/user/signup", data);
-        console.log(res);
+        await this.$axios.post("/api/user/signup", data);
+        await this.$auth.loginWith("local", data);
+        this.$router.push("/");
       } catch (e) {
-        console.log(e.message);
+        this.error = e.response.data.message;
       }
     },
-    
   },
 };
 </script>
