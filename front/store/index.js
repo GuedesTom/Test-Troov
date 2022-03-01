@@ -1,7 +1,7 @@
-const state = () => ({
+export const state = () => ({
     token: ""
 })
 
-const mutation = {
+export const mutation = {
     SET_TOKEN: (state, token) => state.token = token
 }
