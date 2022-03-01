@@ -6,17 +6,27 @@
         <b-row>
           <b-col md="12">
             <ul>
-              <li v-for="(object, index) in objects" :key="index">
+              <div
+                class="card border-success mb-3"
+                style="max-width: 18rem"
+                v-for="(object, index) in objects"
+                :key="index"
+              >
                 <nuxt-link
-                  :to="{ name: 'objects-id', params: { id: object.nom } }"
-                  ><ul>
-                    <li>{{ object.nom }}</li>
-                    <img
-                      :src="object.photo"
-                      style="width: 30%; height: auto"
-                    /></ul
-                ></nuxt-link>
-              </li>
+                  class="list-group-item list-group-item-action"
+                  :to="{ name: 'objects-id', params: { id: object._id } }"
+                >
+                  <div class="card-header bg-transparent border-success">
+                    {{ object.nom }}
+                  </div>
+                  <div class="card-body text-success">
+                    <img :src="object.photo" style="width: 50%; height: auto" />
+                  </div>
+                  <div class="card-footer bg-transparent border-success">
+                    {{ object.description }}
+                  </div>
+                </nuxt-link>
+              </div>
             </ul>
           </b-col>
         </b-row>

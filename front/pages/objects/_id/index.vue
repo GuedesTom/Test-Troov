@@ -1,6 +1,7 @@
 <template>
   <div>
     <Navbar />
+    {{photo}}
     {{ nom }}
   </div>
 </template>
@@ -9,11 +10,17 @@
 import Navbar from "@/components/Navbar";
 export default {
   components: { Navbar },
-  data: () => ({
-      nom: null
-  }),
+  data() {
+    return {
+      object: [],
+    };
+  },
   mounted() {
-      this.nom = this.$route.params.id
+      this.id = this.$route.params.id
+  },
+  async asyncData({ $axios }) {
+    const object = await $axios.$get("/api/object/"+ this.$route.params.id);
+    return { object };
   },
 };
 </script>
