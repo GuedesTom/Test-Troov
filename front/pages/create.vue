@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbat />
-    login
+    create
   </div>
 </template>
 

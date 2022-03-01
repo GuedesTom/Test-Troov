@@ -9,7 +9,7 @@
               <li v-for="(object, index) in objects" :key="index">
                 <nuxt-link
                   :to="{ name: 'objects-id', params: { id: object.nom } }"
-                  >{{ object.nom }}</nuxt-link
+                  ><ul><li>{{ object.nom }}</li><li>{{ object.photo }}</li></ul></nuxt-link
                 >
               </li>
             </ul>
